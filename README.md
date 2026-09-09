@@ -79,37 +79,20 @@ Review accumulated evidence across DPI groups:
 The Results view separates human-facing Findings from descriptive engineering
 analysis so that the tool does not invent a single overall product verdict.
 
-## Public data & security
-
-- This RC is **source-only** (no `dist/` / bundled Qt binaries in Git).
-- Public fixtures and `examples/` are **synthetic**. Private qualification Sessions stay local (`reports/` is ignored).
-- First-party source is released under the MIT License. Public example data is synthetic and does not contain private qualification records.
-- See `SECURITY_CODEX.md`, `THREAT_MODEL.md`, `SECURITY.md`, `PUBLIC_RELEASE_CHECKLIST.md`, `THIRD_PARTY_LICENSES.md`, and `docs/SOFTWARE_VALIDATION.md`.
-
-## Hard rules
-
-- Standalone package only — no external shared-runtime or orchestration coupling
-- Canonical DPI field: `configured_dpi` (legacy `target_dpi` is ingest-only)
-- No single Overall PASS/WARN/FAIL verdict in V1 machine schema
-- Path metrics owned only by `path_quality/`
-- Theme / locale preferences are **not** Session engineering evidence
-- Qt/UI never computes CPI, groups, ratios, or Findings status
-- No Qt imports in `measurement/`, `capture/`, `path_quality/`, `session/`, `findings/`
-
 ## Measurement Method
 
 V1 formal Effective CPI supports **two geometries** (Session `movement_mode`):
 
 | Geometry (UI) | Storage `movement_mode` | Primary counts |
 |---|---|---|
-| **Fixture Vector** (default Qt operator) | `Vector Magnitude` | \(\sqrt{dx^2+dy^2}\) |
+| **Fixture Vector** (default Qt operator) | `Vector Magnitude` | √(dx² + dy²) |
 | **Directional Axis** | `Axis Projection` | `|dx|` or `|dy|` |
 
 ### Fixture Vector (any-angle straight line)
 
 Known physical distance + continuous straight stroke at any angle + Raw Input net counts.
 Official CPI = vector magnitude / inch. Signed X+/Y+ direction is **not** an admission gate.
-Radial Target Gauge shows the expected count radius \(R = DPI \times inch\); Path Trace remains an engineering view.
+Radial Target Gauge shows the expected count radius `R = DPI × physical distance (inches)`; Path Trace remains an engineering view.
 
 ### Directional Axis (engineering characterization)
 
@@ -167,32 +150,32 @@ The launcher does **not** auto-install packages. Prefer the documented `.venv` p
 pytest
 ```
 
+## Design invariants
+
+- Standalone package only — no external shared-runtime or orchestration coupling
+- Canonical DPI field: `configured_dpi` (legacy `target_dpi` is ingest-only)
+- No single Overall PASS/WARN/FAIL verdict in V1 machine schema
+- Path metrics owned only by `path_quality/`
+- Theme / locale preferences are **not** Session engineering evidence
+- Qt/UI never computes CPI, groups, ratios, or Findings status
+- No Qt imports in `measurement/`, `capture/`, `path_quality/`, `session/`, `findings/`
+
+## Public data & security
+
+- This RC is **source-only** (no `dist/` / bundled Qt binaries in Git).
+- Public fixtures and `examples/` are **synthetic**. Private qualification Sessions stay local (`reports/` is ignored).
+- First-party source is released under the MIT License. Public example data is synthetic and does not contain private qualification records.
+- See `SECURITY_CODEX.md`, `THREAT_MODEL.md`, `SECURITY.md`, `PUBLIC_RELEASE_CHECKLIST.md`, `THIRD_PARTY_LICENSES.md`, and `docs/SOFTWARE_VALIDATION.md`.
+
 ## Portable packaging (deferred)
 
-For **0.1.0rc1**, the supported workflow is the source-based Windows install above
-(`pip install -e ".[ui]"` / `RUN_Mouse_DPI_Tool.cmd`).
-
-Portable onedir binaries are **not** published with this source RC. Packaging scripts
-under `packaging/` are included for development and reproducibility; they do **not**
-imply Qt/PySide redistribution readiness.
-
-To build a local portable folder for your own experiments:
+For **0.1.0rc1**, the supported path is the source-based Windows workflow above.
+Portable binaries are not published with this RC. Sources under `packaging/` remain
+available for development and reproducibility (not a Qt/PySide redistribution claim).
 
 ```powershell
 python packaging/build_windows.py
 ```
-
-Expected layout (keep the **entire folder** together when copying/zipping):
-
-```
-dist/MouseDPI_Tool_UI/
-  MouseDPI_Tool_UI.exe
-  MouseDPI_RawInputBridge.exe
-  _internal/...
-```
-
-- Start Capture must launch **one** helper process — never a second UI window.
-- Packaged helper smoke (optional): `$env:MOUSEDPI_PACKAGED_SMOKE=1; pytest -m windows_hw tests/unit/test_ui1b2_packaged_runtime.py -q`
 
 ## Presentation preferences
 
@@ -201,10 +184,4 @@ dist/MouseDPI_Tool_UI/
 - Core shell strings are tracked for completeness; catalogs are improving but should not yet be described as “full 8-language localization”
 - Domain/schema codes (`PASS`, `ACCURACY_FAIL`, `mm`, `X+`, observation IDs, …) stay English/canonical in Session JSON
 
-## Regenerating golden fixtures (rare)
-
-```powershell
-python tools\_generate_legacy_golden_fixtures.py --legacy-root <path-to-MouseDPI_v0.4.1>
-```
-
-Legacy golden reference (immutable): `--legacy-root` / `MOUSEDPI_LEGACY_ROOT`
+Developer maintenance (golden fixtures): see [`reference/README.md`](reference/README.md).
