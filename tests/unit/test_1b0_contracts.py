@@ -40,7 +40,7 @@ def _minimal_session(*, created_at: str, extra_trial_fields: dict | None = None)
     return {
         "schema_version": "MOUSE_DPI_TOOL_SESSION_V1",
         "tool_name": "Mouse DPI Tool",
-        "tool_version": "0.1.0rc1",
+        "tool_version": "0.1.0rc2",
         "session_id": "demo_session_001",
         "created_at": created_at,
         "operator": "tester",

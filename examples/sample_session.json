@@ -263,7 +263,7 @@
     "trials_per_group": 5
   },
   "tool_name": "Mouse DPI Tool",
-  "tool_version": "0.1.0rc1",
+  "tool_version": "0.1.0rc2",
   "trials": [
     {
       "accepted": true,
