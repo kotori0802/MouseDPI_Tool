@@ -86,7 +86,7 @@ V1 formal Effective CPI supports **two geometries** (Session `movement_mode`):
 | Geometry (UI) | Storage `movement_mode` | Primary counts |
 |---|---|---|
 | **Fixture Vector** (default Qt operator) | `Vector Magnitude` | √(dx² + dy²) |
-| **Directional Axis** | `Axis Projection` | `|dx|` or `|dy|` |
+| **Directional Axis** | `Axis Projection` | `abs(counts_x)` or `abs(counts_y)` |
 
 ### Fixture Vector (any-angle straight line)
 
@@ -125,7 +125,7 @@ Important:
 
 Session trials store the existing canonical pair `axis` (`X`|`Y`) and `direction` (`X+`|`X-`|`Y+`|`Y-`). Under Fixture Vector these fields are non-authoritative placeholders (`X` / `X+`); grouping still includes `movement_mode`. **Per-trial `axis` + `direction` are authoritative only for Axis Projection.** Top-level `measurement_context.direction` is non-authoritative.
 
-## Positioning (do not overclaim)
+## Scope and interpretation
 
 > Mouse DPI Tool is a native Windows Raw Input application for repeatable, evidence-based Effective CPI validation and engineering characterization.
 
@@ -136,7 +136,7 @@ Differentiation is methodology and evidence (native Raw Input, per-device counts
 ```powershell
 cd <repo-root>
 python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -e ".[dev,ui]"
+.\.venv\Scripts\python.exe -m pip install -e ".[ui]"
 ```
 
 Then either:
@@ -146,7 +146,10 @@ Then either:
 
 The launcher does **not** auto-install packages. Prefer the documented `.venv` path. If a system Python launcher is selected and the package is missing, the script prints setup instructions and exits non-zero — create/install `.venv` as above, then re-run.
 
+For development and testing, install the extras together:
+
 ```powershell
+.\.venv\Scripts\python.exe -m pip install -e ".[dev,ui]"
 pytest
 ```
 
