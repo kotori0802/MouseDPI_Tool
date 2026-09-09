@@ -91,7 +91,7 @@ V1 formal Effective CPI supports **two geometries** (Session `movement_mode`):
 ### Fixture Vector (any-angle straight line)
 
 Known physical distance + continuous straight stroke at any angle + Raw Input net counts.
-Official CPI = vector magnitude / inch. Signed X+/Y+ direction is **not** an admission gate.
+Effective CPI = vector magnitude / inch. Signed X+/Y+ direction is **not** an admission gate.
 Radial Target Gauge shows the expected count radius `R = DPI × physical distance (inches)`; Path Trace remains an engineering view.
 
 ### Directional Axis (engineering characterization)
