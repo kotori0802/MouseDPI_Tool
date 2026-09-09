@@ -1,0 +1,584 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mouse-dpi-tool.local/schemas/mouse_dpi_tool_session_v1.json",
+  "title": "Mouse DPI Tool Session V1",
+  "description": "Self-contained, versioned, portable session evidence artifact. English canonical fields only. No overall health verdict.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "tool_name",
+    "tool_version",
+    "session_id",
+    "created_at",
+    "dut",
+    "measurement_context",
+    "settings",
+    "trials",
+    "rejected_trials",
+    "deleted_trials",
+    "group_summaries",
+    "ratio_analysis",
+    "findings",
+    "metrics"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "MOUSE_DPI_TOOL_SESSION_V1"
+    },
+    "tool_name": {
+      "type": "string",
+      "const": "Mouse DPI Tool"
+    },
+    "tool_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Stable unique id for this session (also used in artifact naming)."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": ".*(Z|[+-][0-9]{2}:[0-9]{2})$",
+      "description": "Offset-aware ISO-8601 timestamp (e.g. 2026-09-03T10:30:00+08:00 or ...Z). Naive local timestamps are invalid."
+    },
+    "operator": {
+      "type": "string"
+    },
+    "dut": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["vendor", "model", "notes"],
+      "properties": {
+        "vendor": { "type": "string" },
+        "model": { "type": "string" },
+        "notes": { "type": "string" },
+        "configured_dpi_stages": {
+          "type": "array",
+          "items": { "type": "integer", "exclusiveMinimum": 0 }
+        },
+        "sensor": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "model": { "type": ["string", "null"] },
+            "manufacturer": { "type": ["string", "null"] },
+            "reported_max_cpi": { "type": ["integer", "null"] },
+            "source": { "type": ["string", "null"] },
+            "evidence_type": { "type": ["string", "null"] },
+            "confidence": {
+              "type": ["string", "null"],
+              "enum": ["high", "medium", "low", "unknown", null]
+            }
+          }
+        }
+      }
+    },
+    "measurement_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "fixture_type", "surface", "direction", "polling_rate_note", "notes"],
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": ["hand_drag", "click_click", "fixture", "synthetic", "unknown"]
+        },
+        "fixture_type": { "type": "string" },
+        "surface": { "type": "string" },
+        "direction": { "type": "string" },
+        "polling_rate_note": { "type": "string" },
+        "notes": { "type": "string" },
+        "acceptance_tolerance_note": { "type": "string" },
+        "measurement_uncertainty_note": { "type": "string" },
+        "measurement_system_uncertainty_note": { "type": "string" },
+        "reference_uncertainty_pct": {
+          "type": ["number", "null"],
+          "minimum": 0
+        },
+        "dpi_configuration_source": {
+          "type": "string",
+          "enum": [
+            "hardware_control",
+            "onboard_profile",
+            "vendor_software",
+            "other",
+            "unknown"
+          ]
+        },
+        "control_software_state": {
+          "type": "string",
+          "enum": [
+            "not_running",
+            "ui_open",
+            "background_service_present",
+            "unknown"
+          ]
+        },
+        "control_software_name": { "type": "string" },
+        "control_software_version": { "type": "string" },
+        "profile_note": { "type": "string" },
+        "configured_dpi_confirmation": {
+          "type": "string",
+          "enum": ["manual", "unknown"]
+        }
+      }
+    },
+    "settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "distance_mm",
+        "distance_unit",
+        "movement_mode",
+        "cpi_error_pass_pct",
+        "cpi_error_fail_pct"
+      ],
+      "properties": {
+        "distance_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Canonical physical distance in millimetres."
+        },
+        "distance_input": { "type": "number" },
+        "distance_unit": {
+          "type": "string",
+          "enum": ["mm", "cm", "inch"],
+          "description": "Canonical UI input unit; stored distance_mm is always millimetres."
+        },
+        "dpi_steps": {
+          "type": "array",
+          "items": { "type": "integer", "exclusiveMinimum": 0 }
+        },
+        "movement_mode": {
+          "type": "string",
+          "enum": ["Vector Magnitude", "Axis Projection"]
+        },
+        "trials_per_group": { "type": "integer", "minimum": 1 },
+        "min_valid_trials_per_group": { "type": "integer", "minimum": 1 },
+        "cpi_error_pass_pct": { "type": "number", "minimum": 0 },
+        "cpi_error_fail_pct": { "type": "number", "minimum": 0 },
+        "cpi_cv_pass_pct": { "type": "number", "minimum": 0 },
+        "cpi_cv_fail_pct": { "type": "number", "minimum": 0 },
+        "ratio_error_pass_pct": { "type": "number", "minimum": 0 },
+        "ratio_error_fail_pct": { "type": "number", "minimum": 0 },
+        "straightness_fail_pct": { "type": "number", "minimum": 0 },
+        "fixture_noise_floor_counts": { "type": "integer", "minimum": 0 },
+        "tolerance_mode": { "type": "string" }
+      }
+    },
+    "trials": {
+      "type": "array",
+      "description": "Active (accepted, not deleted, not rejected) trials included in group/ratio analysis.",
+      "items": { "$ref": "#/$defs/trial" }
+    },
+    "rejected_trials": {
+      "type": "array",
+      "description": "Trials explicitly rejected by operator or invalid captures retained as evidence; excluded from active analysis.",
+      "items": { "$ref": "#/$defs/trial" }
+    },
+    "deleted_trials": {
+      "type": "array",
+      "description": "Trials deleted from the active set; retained for audit.",
+      "items": { "$ref": "#/$defs/trial" }
+    },
+    "group_summaries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/group_summary" }
+    },
+    "ratio_analysis": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ratio_row" }
+    },
+    "findings": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Independent finding dimensions. Do not merge into a single overall health verdict.",
+      "required": [
+        "accuracy",
+        "repeatability",
+        "ratio",
+        "path_quality",
+        "manual_observations",
+        "linearity",
+        "scaling_evidence",
+        "native_capability"
+      ],
+      "properties": {
+        "accuracy": { "$ref": "#/$defs/finding" },
+        "repeatability": { "$ref": "#/$defs/finding" },
+        "ratio": { "$ref": "#/$defs/finding" },
+        "path_quality": { "$ref": "#/$defs/finding" },
+        "linearity": { "$ref": "#/$defs/finding" },
+        "scaling_evidence": { "$ref": "#/$defs/finding" },
+        "native_capability": { "$ref": "#/$defs/finding" },
+        "manual_observations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/manual_observation" }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Strict allow-list of aggregate/count metrics only. No overall PASS/WARN/FAIL verdict fields.",
+      "required": [
+        "active_trial_count",
+        "rejected_trial_count",
+        "deleted_trial_count",
+        "group_count",
+        "ratio_pair_count"
+      ],
+      "properties": {
+        "active_trial_count": { "type": "integer", "minimum": 0 },
+        "rejected_trial_count": { "type": "integer", "minimum": 0 },
+        "deleted_trial_count": { "type": "integer", "minimum": 0 },
+        "group_count": { "type": "integer", "minimum": 0 },
+        "ratio_pair_count": { "type": "integer", "minimum": 0 }
+      }
+    }
+  },
+  "$defs": {
+    "findingStatus": {
+      "type": "string",
+      "enum": ["PASS", "WARN", "FAIL", "NOT_TESTED", "NOT_EVALUATED"],
+      "description": "NOT_TESTED = dimension not executed. NOT_EVALUATED = data present but interpretation not run in this version."
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "issue_codes"],
+      "properties": {
+        "status": { "$ref": "#/$defs/findingStatus" },
+        "issue_codes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "metrics": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Finding-local aggregates only. No overall verdict keys.",
+          "properties": {
+            "active_trial_count": { "type": "integer", "minimum": 0 },
+            "group_count": { "type": "integer", "minimum": 0 },
+            "max_abs_error_pct": { "type": ["number", "null"] },
+            "groups_pass": { "type": "integer", "minimum": 0 },
+            "groups_warn": { "type": "integer", "minimum": 0 },
+            "groups_fail": { "type": "integer", "minimum": 0 },
+            "evaluated_group_count": { "type": "integer", "minimum": 0 },
+            "insufficient_group_count": { "type": "integer", "minimum": 0 },
+            "max_cpi_cv_pct": { "type": ["number", "null"] },
+            "min_valid_trials_per_group": { "type": "integer", "minimum": 0 },
+            "ratio_pair_count": { "type": "integer", "minimum": 0 },
+            "max_abs_ratio_error_pct": { "type": ["number", "null"] },
+            "ratios_pass": { "type": "integer", "minimum": 0 },
+            "ratios_warn": { "type": "integer", "minimum": 0 },
+            "ratios_fail": { "type": "integer", "minimum": 0 },
+            "pq_trial_count": { "type": "integer", "minimum": 0 },
+            "pq_missing_count": { "type": "integer", "minimum": 0 },
+            "pq_pass": { "type": "integer", "minimum": 0 },
+            "pq_warn": { "type": "integer", "minimum": 0 },
+            "pq_fail": { "type": "integer", "minimum": 0 },
+            "pq_not_evaluated": { "type": "integer", "minimum": 0 },
+            "pq_not_tested": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "manual_observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "status"],
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["PASS", "WARN", "FAIL", "SKIP", "NOT_TESTED"]
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "per_device_counts_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dx", "dy", "event_count"],
+      "properties": {
+        "dx": { "type": "integer" },
+        "dy": { "type": "integer" },
+        "event_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "capture_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Aggregate capture provenance. Not an unbounded raw MovementSample stream.",
+      "required": [
+        "state",
+        "complete",
+        "integrity_ok",
+        "valid_complete_capture",
+        "published_count",
+        "device_ids",
+        "per_device_counts"
+      ],
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": ["idle", "running", "stopped", "cancelled", "error"]
+        },
+        "complete": { "type": "boolean" },
+        "integrity_ok": { "type": "boolean" },
+        "valid_complete_capture": {
+          "type": "boolean",
+          "description": "True only when capture.is_valid_complete_capture was True at admission time."
+        },
+        "published_count": { "type": "integer", "minimum": 0 },
+        "device_ids": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "per_device_counts": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/per_device_counts_entry" }
+        },
+        "last_error": { "type": ["string", "null"] },
+        "subscriber_errors": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "status_callback_errors": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Presentation diagnostics only; do not treat as measurement integrity failure."
+        },
+        "issue_codes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "capture_generation": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Optional CaptureEngine generation / epoch at admission time."
+        },
+        "stale_sample_count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Optional count of closed-generation or post-freeze samples rejected during this capture."
+        }
+      }
+    },
+    "trial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trial_id",
+        "created_at",
+        "configured_dpi",
+        "distance_mm",
+        "counts_x",
+        "counts_y",
+        "vector_counts",
+        "primary_counts",
+        "measured_cpi",
+        "error_pct",
+        "movement_mode",
+        "accepted",
+        "rejected",
+        "deleted"
+      ],
+      "properties": {
+        "trial_id": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Stable session-local trial identity (never reused within the session)."
+        },
+        "session_trial_id": {
+          "type": "integer",
+          "description": "Optional original in-session id when renumbered for export."
+        },
+        "report_trial_no": {
+          "type": "integer",
+          "description": "Optional 1-based export sequence among active trials."
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": ".*(Z|[+-][0-9]{2}:[0-9]{2})$",
+          "description": "Offset-aware ISO-8601 timestamp. Naive local timestamps are invalid."
+        },
+        "configured_dpi": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "description": "Configured DPI stage under test (not advertised marketing DPI). Canonical; do not also emit target_dpi."
+        },
+        "distance_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Canonical physical travel distance in millimetres."
+        },
+        "distance_input": { "type": "number" },
+        "distance_unit": {
+          "type": "string",
+          "enum": ["mm", "cm", "inch"]
+        },
+        "axis": { "type": "string" },
+        "direction": { "type": "string" },
+        "movement_mode": {
+          "type": "string",
+          "enum": ["Vector Magnitude", "Axis Projection"]
+        },
+        "counts_x": { "type": "integer" },
+        "counts_y": { "type": "integer" },
+        "vector_counts": { "type": "integer" },
+        "primary_counts": { "type": "integer" },
+        "secondary_counts": { "type": "integer" },
+        "measured_cpi": { "type": "number" },
+        "error_pct": { "type": "number" },
+        "axis_leakage_pct": { "type": "number" },
+        "path_total_counts": {
+          "type": ["number", "null"],
+          "description": "Derived only by path_quality/. Null if Path Quality not run."
+        },
+        "straightness_pct": {
+          "type": ["number", "null"],
+          "description": "Derived only by path_quality/. Null if Path Quality not run."
+        },
+        "path_quality_status": {
+          "type": ["string", "null"],
+          "enum": ["PASS", "WARN", "FAIL", "NOT_EVALUATED", null]
+        },
+        "path_quality_issue_codes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "fixture_noise_floor_counts": { "type": ["integer", "null"] },
+        "fixture_noise_floor_policy": { "type": ["string", "null"] },
+        "measurement_status": {
+          "type": "string",
+          "enum": ["PASS", "WARN", "FAIL"],
+          "description": "CPI/leakage status from measurement domain only; not path quality. Canonical trial status field."
+        },
+        "cpi_error_pass_pct": { "type": "number" },
+        "cpi_error_fail_pct": { "type": "number" },
+        "tolerance_mode": { "type": "string" },
+        "run_validity": { "type": "string" },
+        "issue_tags": { "type": "string" },
+        "issue_codes": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "source": { "type": "string" },
+        "note": { "type": "string" },
+        "group_id": { "type": "string" },
+        "accepted": { "type": "boolean" },
+        "rejected": { "type": "boolean" },
+        "deleted": { "type": "boolean" },
+        "rejection_reason": { "type": "string" },
+        "deletion_reason": { "type": "string" },
+        "capture_evidence": { "$ref": "#/$defs/capture_evidence" },
+        "motion_timing": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Optional O(1) active-motion timing aggregates. Absent on historical Sessions. Never corrects CPI.",
+          "properties": {
+            "timing_status": {
+              "type": "string",
+              "enum": ["OK", "NOT_EVALUATED"]
+            },
+            "motion_sample_count": { "type": "integer", "minimum": 0 },
+            "first_motion_timestamp": { "type": ["number", "null"] },
+            "last_motion_timestamp": { "type": ["number", "null"] },
+            "active_motion_duration_ms": { "type": ["number", "null"] },
+            "estimated_traversal_speed_mm_s": { "type": ["number", "null"] },
+            "capture_elapsed_ms": { "type": ["number", "null"] },
+            "first_motion_delay_ms": { "type": ["number", "null"] },
+            "post_motion_idle_ms": { "type": ["number", "null"] },
+            "active_event_rate_hz": { "type": ["number", "null"] },
+            "timing_source": { "type": "string" },
+            "notes": { "type": "string" },
+            "arm_requested_ts": { "type": ["number", "null"] },
+            "source_ready_ts": { "type": ["number", "null"] },
+            "stop_requested_ts": { "type": ["number", "null"] },
+            "arm_to_ready_ms": { "type": ["number", "null"] },
+            "ready_to_first_motion_ms": { "type": ["number", "null"] },
+            "stop_to_source_stopped_ms": { "type": ["number", "null"] },
+            "stop_to_drain_complete_ms": { "type": ["number", "null"] }
+          }
+        }
+      },
+      "not": {
+        "anyOf": [
+          { "required": ["target_dpi"] },
+          { "required": ["status"] }
+        ]
+      }
+    },
+    "group_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "group_id",
+        "configured_dpi",
+        "distance_mm",
+        "valid_trials",
+        "avg_measured_cpi",
+        "status"
+      ],
+      "not": {
+        "required": ["target_dpi"]
+      },
+      "properties": {
+        "group_id": { "type": "string" },
+        "configured_dpi": { "type": "integer" },
+        "axis": { "type": "string" },
+        "direction": { "type": "string" },
+        "distance_mm": { "type": "number" },
+        "movement_mode": { "type": "string" },
+        "valid_trials": { "type": "integer" },
+        "avg_measured_cpi": { "type": ["number", "null"] },
+        "min_measured_cpi": { "type": ["number", "null"] },
+        "max_measured_cpi": { "type": ["number", "null"] },
+        "cpi_cv_pct": { "type": ["number", "null"] },
+        "avg_error_pct": { "type": ["number", "null"] },
+        "max_abs_error_pct": { "type": ["number", "null"] },
+        "avg_axis_leakage_pct": { "type": ["number", "null"] },
+        "max_axis_leakage_pct": { "type": ["number", "null"] },
+        "status": { "type": "string" },
+        "cpi_error_pass_pct": { "type": "number" },
+        "cpi_error_fail_pct": { "type": "number" },
+        "tolerance_mode": { "type": "string" },
+        "run_validity": { "type": "string" },
+        "issue_tags": { "type": "string" }
+      }
+    },
+    "ratio_row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "from_dpi",
+        "to_dpi",
+        "expected_ratio",
+        "measured_ratio",
+        "ratio_error_pct",
+        "status"
+      ],
+      "properties": {
+        "axis": { "type": "string" },
+        "direction": { "type": "string" },
+        "distance_mm": { "type": "number" },
+        "movement_mode": { "type": "string" },
+        "from_dpi": { "type": "integer" },
+        "to_dpi": { "type": "integer" },
+        "expected_ratio": { "type": "number" },
+        "measured_ratio": { "type": "number" },
+        "ratio_error_pct": { "type": "number" },
+        "status": { "type": "string" },
+        "issue_tags": { "type": "string" }
+      }
+    }
+  }
+}

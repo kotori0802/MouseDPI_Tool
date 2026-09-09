@@ -1,0 +1,365 @@
+{
+  "created_at": "2026-09-03T13:00:00+08:00",
+  "deleted_trials": [],
+  "dut": {
+    "configured_dpi_stages": [
+      800,
+      1600
+    ],
+    "model": "DemoMouse",
+    "notes": "Synthetic regression fixture",
+    "vendor": "ExampleVendor"
+  },
+  "findings": {
+    "accuracy": {
+      "issue_codes": [],
+      "metrics": {
+        "active_trial_count": 2,
+        "group_count": 2,
+        "groups_fail": 0,
+        "groups_pass": 2,
+        "groups_warn": 0,
+        "max_abs_error_pct": 0.0125
+      },
+      "notes": "",
+      "status": "PASS"
+    },
+    "linearity": {
+      "issue_codes": [],
+      "metrics": {},
+      "notes": "Reserved in V1; Extreme DPI / scaling heuristics not implemented.",
+      "status": "NOT_EVALUATED"
+    },
+    "manual_observations": [
+      {
+        "id": "dpi_control_identification",
+        "label": "DPI Control Identification",
+        "status": "PASS"
+      },
+      {
+        "id": "dpi_indicator_check",
+        "label": "DPI Indicator Check",
+        "notes": "no LED",
+        "status": "SKIP"
+      }
+    ],
+    "native_capability": {
+      "issue_codes": [],
+      "metrics": {},
+      "notes": "Reserved in V1; Extreme DPI / scaling heuristics not implemented.",
+      "status": "NOT_EVALUATED"
+    },
+    "path_quality": {
+      "issue_codes": [],
+      "metrics": {
+        "active_trial_count": 2,
+        "pq_fail": 0,
+        "pq_missing_count": 0,
+        "pq_not_evaluated": 0,
+        "pq_not_tested": 0,
+        "pq_pass": 2,
+        "pq_trial_count": 2,
+        "pq_warn": 0
+      },
+      "notes": "",
+      "status": "PASS"
+    },
+    "ratio": {
+      "issue_codes": [],
+      "metrics": {
+        "active_trial_count": 2,
+        "max_abs_ratio_error_pct": 0.0,
+        "ratio_pair_count": 1,
+        "ratios_fail": 0,
+        "ratios_pass": 1,
+        "ratios_warn": 0
+      },
+      "notes": "Configured-DPI step ratio only; not a native-capability or firmware-scaling verdict.",
+      "status": "PASS"
+    },
+    "repeatability": {
+      "issue_codes": [],
+      "metrics": {
+        "active_trial_count": 2,
+        "evaluated_group_count": 2,
+        "group_count": 2,
+        "insufficient_group_count": 0,
+        "max_cpi_cv_pct": 0.0,
+        "min_valid_trials_per_group": 1
+      },
+      "notes": "",
+      "status": "PASS"
+    },
+    "scaling_evidence": {
+      "issue_codes": [],
+      "metrics": {},
+      "notes": "Reserved in V1; Extreme DPI / scaling heuristics not implemented.",
+      "status": "NOT_EVALUATED"
+    }
+  },
+  "group_summaries": [
+    {
+      "avg_axis_leakage_pct": 0.381,
+      "avg_error_pct": 0.0125,
+      "avg_measured_cpi": 800.1,
+      "axis": "X",
+      "configured_dpi": 800,
+      "cpi_cv_pct": 0.0,
+      "cpi_error_fail_pct": 5.0,
+      "cpi_error_pass_pct": 3.0,
+      "direction": "X+",
+      "distance_mm": 100.0,
+      "group_id": "800_X_X+_100mm_Vector_Magnitude",
+      "issue_tags": "",
+      "max_abs_error_pct": 0.0125,
+      "max_axis_leakage_pct": 0.381,
+      "max_measured_cpi": 800.1,
+      "min_measured_cpi": 800.1,
+      "movement_mode": "Vector Magnitude",
+      "run_validity": "VALID",
+      "status": "PASS",
+      "tolerance_mode": "FIELD_FORMAL",
+      "valid_trials": 1
+    },
+    {
+      "avg_axis_leakage_pct": 0.3175,
+      "avg_error_pct": 0.0125,
+      "avg_measured_cpi": 1600.2,
+      "axis": "X",
+      "configured_dpi": 1600,
+      "cpi_cv_pct": 0.0,
+      "cpi_error_fail_pct": 5.0,
+      "cpi_error_pass_pct": 3.0,
+      "direction": "X+",
+      "distance_mm": 100.0,
+      "group_id": "1600_X_X+_100mm_Vector_Magnitude",
+      "issue_tags": "",
+      "max_abs_error_pct": 0.0125,
+      "max_axis_leakage_pct": 0.3175,
+      "max_measured_cpi": 1600.2,
+      "min_measured_cpi": 1600.2,
+      "movement_mode": "Vector Magnitude",
+      "run_validity": "VALID",
+      "status": "PASS",
+      "tolerance_mode": "FIELD_FORMAL",
+      "valid_trials": 1
+    }
+  ],
+  "measurement_context": {
+    "direction": "X+",
+    "fixture_type": "",
+    "method": "synthetic",
+    "notes": "",
+    "polling_rate_note": "",
+    "surface": "cloth"
+  },
+  "metrics": {
+    "active_trial_count": 2,
+    "deleted_trial_count": 0,
+    "group_count": 2,
+    "ratio_pair_count": 1,
+    "rejected_trial_count": 1
+  },
+  "operator": "fixture",
+  "ratio_analysis": [
+    {
+      "axis": "X",
+      "direction": "X+",
+      "distance_mm": 100.0,
+      "expected_ratio": 2.0,
+      "from_dpi": 800,
+      "issue_tags": "",
+      "measured_ratio": 2.0,
+      "movement_mode": "Vector Magnitude",
+      "ratio_error_pct": 0.0,
+      "status": "PASS",
+      "to_dpi": 1600
+    }
+  ],
+  "rejected_trials": [
+    {
+      "accepted": false,
+      "axis": "X",
+      "axis_leakage_pct": 0.0,
+      "configured_dpi": 800,
+      "counts_x": 100,
+      "counts_y": 0,
+      "cpi_error_fail_pct": 5.0,
+      "cpi_error_pass_pct": 3.0,
+      "created_at": "2026-09-03T14:24:09+08:00",
+      "deleted": false,
+      "direction": "X+",
+      "distance_input": 100.0,
+      "distance_mm": 100.0,
+      "distance_unit": "mm",
+      "error_pct": -96.825,
+      "group_id": "800_X_X+_100mm_Vector_Magnitude",
+      "issue_codes": [],
+      "issue_tags": "",
+      "measured_cpi": 25.4,
+      "measurement_status": "FAIL",
+      "movement_mode": "Vector Magnitude",
+      "note": "",
+      "path_total_counts": null,
+      "primary_counts": 100,
+      "rejected": true,
+      "rejection_reason": "operator rejected for fixture demo",
+      "run_validity": "VALID",
+      "secondary_counts": 0,
+      "source": "synthetic",
+      "straightness_pct": null,
+      "tolerance_mode": "FIELD_FORMAL",
+      "trial_id": 3,
+      "vector_counts": 100
+    }
+  ],
+  "schema_version": "MOUSE_DPI_TOOL_SESSION_V1",
+  "session_id": "mds_fixture_session_v1",
+  "settings": {
+    "cpi_cv_fail_pct": 3.0,
+    "cpi_cv_pass_pct": 1.0,
+    "cpi_error_fail_pct": 5.0,
+    "cpi_error_pass_pct": 3.0,
+    "distance_input": 100.0,
+    "distance_mm": 100.0,
+    "distance_unit": "mm",
+    "dpi_steps": [
+      400,
+      800,
+      1600,
+      3200
+    ],
+    "fixture_noise_floor_counts": 7,
+    "min_valid_trials_per_group": 1,
+    "movement_mode": "Vector Magnitude",
+    "ratio_error_fail_pct": 5.0,
+    "ratio_error_pass_pct": 2.0,
+    "straightness_fail_pct": 85.0,
+    "tolerance_mode": "FIELD_FORMAL",
+    "trials_per_group": 5
+  },
+  "tool_name": "Mouse DPI Tool",
+  "tool_version": "0.1.0rc1",
+  "trials": [
+    {
+      "accepted": true,
+      "axis": "X",
+      "axis_leakage_pct": 0.381,
+      "capture_evidence": {
+        "complete": true,
+        "device_ids": [
+          "11"
+        ],
+        "integrity_ok": true,
+        "issue_codes": [],
+        "last_error": null,
+        "per_device_counts": {
+          "11": {
+            "dx": 3150,
+            "dy": 12,
+            "event_count": 42
+          }
+        },
+        "published_count": 42,
+        "state": "stopped",
+        "status_callback_errors": [],
+        "subscriber_errors": [],
+        "valid_complete_capture": true
+      },
+      "configured_dpi": 800,
+      "counts_x": 3150,
+      "counts_y": 12,
+      "cpi_error_fail_pct": 5.0,
+      "cpi_error_pass_pct": 3.0,
+      "created_at": "2026-09-03T14:24:09+08:00",
+      "deleted": false,
+      "direction": "X+",
+      "distance_input": 100.0,
+      "distance_mm": 100.0,
+      "distance_unit": "mm",
+      "error_pct": 0.0125,
+      "fixture_noise_floor_counts": 7,
+      "fixture_noise_floor_policy": "not_subtracted_from_dpi_counts",
+      "group_id": "800_X_X+_100mm_Vector_Magnitude",
+      "issue_codes": [],
+      "issue_tags": "",
+      "measured_cpi": 800.1,
+      "measurement_status": "PASS",
+      "movement_mode": "Vector Magnitude",
+      "note": "",
+      "path_quality_issue_codes": [],
+      "path_quality_status": "PASS",
+      "path_total_counts": 3150.0,
+      "primary_counts": 3150,
+      "rejected": false,
+      "report_trial_no": 1,
+      "run_validity": "VALID",
+      "secondary_counts": 12,
+      "source": "synthetic",
+      "straightness_pct": 99.5,
+      "tolerance_mode": "FIELD_FORMAL",
+      "trial_id": 1,
+      "vector_counts": 3150
+    },
+    {
+      "accepted": true,
+      "axis": "X",
+      "axis_leakage_pct": 0.3175,
+      "capture_evidence": {
+        "complete": true,
+        "device_ids": [
+          "11"
+        ],
+        "integrity_ok": true,
+        "issue_codes": [],
+        "last_error": null,
+        "per_device_counts": {
+          "11": {
+            "dx": 6300,
+            "dy": 20,
+            "event_count": 55
+          }
+        },
+        "published_count": 55,
+        "state": "stopped",
+        "status_callback_errors": [],
+        "subscriber_errors": [],
+        "valid_complete_capture": true
+      },
+      "configured_dpi": 1600,
+      "counts_x": 6300,
+      "counts_y": 20,
+      "cpi_error_fail_pct": 5.0,
+      "cpi_error_pass_pct": 3.0,
+      "created_at": "2026-09-03T14:24:09+08:00",
+      "deleted": false,
+      "direction": "X+",
+      "distance_input": 100.0,
+      "distance_mm": 100.0,
+      "distance_unit": "mm",
+      "error_pct": 0.0125,
+      "fixture_noise_floor_counts": 7,
+      "fixture_noise_floor_policy": "not_subtracted_from_dpi_counts",
+      "group_id": "1600_X_X+_100mm_Vector_Magnitude",
+      "issue_codes": [],
+      "issue_tags": "",
+      "measured_cpi": 1600.2,
+      "measurement_status": "PASS",
+      "movement_mode": "Vector Magnitude",
+      "note": "",
+      "path_quality_issue_codes": [],
+      "path_quality_status": "PASS",
+      "path_total_counts": 6300.0,
+      "primary_counts": 6300,
+      "rejected": false,
+      "report_trial_no": 2,
+      "run_validity": "VALID",
+      "secondary_counts": 20,
+      "source": "synthetic",
+      "straightness_pct": 99.2,
+      "tolerance_mode": "FIELD_FORMAL",
+      "trial_id": 2,
+      "vector_counts": 6300
+    }
+  ]
+}

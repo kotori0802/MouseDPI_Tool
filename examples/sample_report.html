@@ -1,0 +1,210 @@
+<!-- Synthetic demonstration data — not a real product validation result. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mouse DPI Validation Report — mds_20260908T173000_5cbc29f9</title>
+<style>
+  :root { color-scheme: light; }
+  body { font-family: "Segoe UI", Helvetica, Arial, sans-serif; color: #1d1d1f; background: #fff;
+         margin: 0; padding: 32px; line-height: 1.45; }
+  h1 { font-size: 28px; letter-spacing: -0.4px; margin: 0 0 8px; }
+  h2 { font-size: 18px; margin: 28px 0 10px; border-bottom: 1px solid #d2d2d7; padding-bottom: 6px; }
+  h3 { font-size: 15px; margin: 0; }
+  .meta { color: #6e6e73; font-size: 13px; }
+  .finding { border: 1px solid #d2d2d7; border-radius: 12px; padding: 14px 16px; margin: 10px 0; }
+  .finding-secondary { border-style: dashed; opacity: 0.95; }
+  .finding header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .badge { font-weight: 650; font-size: 13px; }
+  .status-pass .badge { color: #1f8f4e; }
+  .status-warn .badge { color: #b26a00; }
+  .status-fail .badge { color: #c9342d; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #e8e8ed; }
+  table.kv th { width: 48%; color: #6e6e73; font-weight: 500; }
+  .chart { margin: 12px 0; overflow: auto; }
+  .chart svg { max-width: 100%; height: auto; border: 1px solid #e8e8ed; border-radius: 10px; }
+  ul.limits { margin: 6px 0; padding-left: 18px; }
+  .research { color: #6e6e73; }
+  .scale-box { border: 1px solid #e8e8ed; border-radius: 10px; padding: 12px 14px; background: #fafafa; }
+  @media print {
+    body { padding: 12px; }
+    .finding { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Mouse DPI Validation Report</h1>
+    <p class="meta">
+      Session ID: mds_20260908T173000_5cbc29f9<br/>
+      Generated: SYNTHETIC-DEMO-FIXED<br/>
+      Tool: Mouse DPI Tool 0.1.0rc1<br/>
+      Operator: demo
+    </p>
+  </header>
+
+  <h2>DUT</h2>
+  <table class="kv">
+    <tr><th>Vendor</th><td>ExampleVendor</td></tr>
+    <tr><th>Model</th><td>DemoMouse</td></tr>
+    <tr><th>Notes</th><td>Synthetic demonstration data — not a real product validation result.</td></tr>
+  </table>
+
+  <h2>Test Configuration</h2>
+  <table class="kv">
+    <tr><th>Movement mode</th><td>Vector Magnitude</td></tr>
+    <tr><th>Physical distance</th><td>50.80 mm</td></tr>
+    <tr><th>Capture method</th><td>hand_drag</td></tr>
+    <tr><th>Tracking surface</th><td>—</td></tr>
+    <tr><th>Fixture / contact notes</th><td>—</td></tr>
+    <tr><th>Engineering notes</th><td>Synthetic demonstration data — not a real product validation result.</td></tr>
+    <tr><th>Configured DPI groups</th><td>400, 800, 1600, 3200</td></tr>
+  </table>
+  <p><strong>Accuracy criterion</strong></p>
+  <ul class="limits"><li>Mode: FIELD_STRICT</li><li>PASS ≤ 3%</li><li>WARN &gt; 3% – 7%</li><li>FAIL &gt; 7%</li></ul>
+
+  <h2>How to read this report</h2>
+  <p class="meta">Accuracy: absolute Effective CPI vs configured DPI (maximum individual Trial error). Relative DPI Scaling: measured CPI step ratios vs configured step ratios (relative scaling — not absolute CPI closeness). Absolute CPI values may share a common offset while relative DPI-step ratios remain consistent; these describe different properties. Repeatability: consistency within a DPI group (lower CPI CV is better). Path Quality: no V1 reversal/jitter anomaly when PASS; incomplete-coverage WARN means missing evaluable path evidence on some Trials — not necessarily a path failure. Cross-DPI Scale Pattern: descriptive group-mean scale factors — not a Finding and not a root cause. Measured CPI chart: closer to 1:1 ideal is better (group-average deviation ≠ Accuracy maximum individual Trial error). Error chart: lower is better; PASS/WARN/FAIL use Session thresholds. CV chart: lower means better repeatability.</p>
+
+  <h2>Engineering Findings</h2>
+  
+<section class="finding status-warn">
+  <header><h3>Accuracy</h3>
+  <span class="badge">WARN</span></header>
+  <p class="meta">How close measured Effective CPI is to configured DPI.</p>
+  <table class="kv"><tr><th>Maximum individual CPI error</th><td>4.00%</td></tr><tr><th>Groups</th><td>PASS 0 · WARN 4 · FAIL 0</td></tr><tr><th>Active Trials</th><td>20</td></tr></table>
+</section>
+<section class="finding status-pass">
+  <header><h3>Repeatability</h3>
+  <span class="badge">PASS</span></header>
+  <p class="meta">How consistent repeated measurements are within the same DPI group.</p>
+  <table class="kv"><tr><th>Maximum CPI CV</th><td>0.0000%</td></tr><tr><th>Groups</th><td>PASS 4 · WARN 0 · FAIL 0</td></tr><tr><th>Min trials / group</th><td>3</td></tr></table>
+</section>
+<section class="finding status-not_tested">
+  <header><h3>Path Quality</h3>
+  <span class="badge">NOT_TESTED</span></header>
+  <p class="meta">No path-quality issue defined by the current V1 reversal/jitter rules was detected when PASS. Does not mean perfect physical fixture straightness or zero lateral motion. WARN with incomplete coverage means one or more Trials lacked evaluable path evidence (e.g. NOT_EVALUATED) — not that a path failure was detected. Not Tracking / Sensor / Native capability.</p>
+  <table class="kv"><tr><th>Path Quality PASS</th><td>0</td></tr><tr><th>WARN</th><td>0</td></tr><tr><th>FAIL</th><td>0</td></tr><tr><th>NOT_EVALUATED</th><td>0</td></tr><tr><th>Trials with PQ</th><td>0</td></tr></table>
+</section>
+<section class="finding finding-secondary status-pass">
+  <header><h3>Relative DPI Scaling</h3>
+  <span class="badge">PASS</span></header>
+  <p class="meta">Compares measured CPI ratios between DPI steps with their configured ratios. Useful for relative-scaling review; it does not prove sensor linearity or native capability.</p>
+  <table class="kv"><tr><th>Maximum |ratio error|</th><td>0.0000%</td></tr><tr><th>Pairs</th><td>PASS 3 · WARN 0 · FAIL 0</td></tr></table>
+</section>
+
+  <h2>DPI Group Summary</h2>
+  <table>
+    <thead><tr>
+      <th>Configured DPI</th><th>Trial count</th><th>Avg measured CPI</th>
+      <th>Max |error| %</th><th>CPI CV %</th><th>Status</th>
+    </tr></thead>
+    <tbody><tr><td>400</td><td>5</td><td>384.0</td><td>4.00</td><td>0.0000</td><td>WARN</td></tr><tr><td>800</td><td>5</td><td>768.0</td><td>4.00</td><td>0.0000</td><td>WARN</td></tr><tr><td>1600</td><td>5</td><td>1536.0</td><td>4.00</td><td>0.0000</td><td>WARN</td></tr><tr><td>3200</td><td>5</td><td>3072.0</td><td>4.00</td><td>0.0000</td><td>WARN</td></tr></tbody>
+  </table>
+
+  <h2>Relative DPI Scaling</h2>
+  <p class="meta">Measured CPI step ratios vs configured step ratios. Useful for relative-scaling review; does not prove sensor linearity or native capability.</p>
+  <table>
+    <thead><tr>
+      <th>From DPI</th><th>To DPI</th><th>Configured ratio</th>
+      <th>Measured ratio</th><th>Ratio error %</th><th>Status</th>
+    </tr></thead>
+    <tbody><tr><td>400</td><td>800</td><td>2.0000</td><td>2.0000</td><td>0.0000</td><td>PASS</td></tr><tr><td>800</td><td>1600</td><td>2.0000</td><td>2.0000</td><td>0.0000</td><td>PASS</td></tr><tr><td>1600</td><td>3200</td><td>2.0000</td><td>2.0000</td><td>0.0000</td><td>PASS</td></tr></tbody>
+  </table>
+
+  <h2>Cross-DPI Scale Pattern</h2>
+  <div class="scale-box"><p class="meta">Cross-DPI Scale Pattern Descriptive diagnostic only — not a Finding; no automatic root cause. Evaluated DPI groups: 4 Normalized scale (avg CPI / configured): 0.9600 – 0.9600 (mean 0.9600, median 0.9600, spread 0.0000) Group-average deviation from configured: approximately -4.00% to -4.00%. All evaluated DPI-group means share a near-common offset from configured values, while adjacent measured DPI ratios remain close to their configured ratios (max |ratio error| 0.0000%). This warrants measurement-system or product calibration review — not an automatic fixture or sensor verdict. Possible contributors include travel-distance definition, fixture geometry/preload, start/end references, product-wide CPI offset, or other common effects. The Tool does not choose among them.</p></div>
+
+  <h2>Engineering Diagnostics</h2>
+  <p class="meta">Descriptive Trial distribution views from canonical evidence — not Findings.</p>
+  <div class="chart"><svg xmlns="http://www.w3.org/2000/svg" width="720" height="280" viewBox="0 0 720 280"><rect width="100%" height="100%" fill="#ffffff"/><text x="360" y="22" text-anchor="middle" font-size="14" fill="#1d1d1f" font-family="Segoe UI, Helvetica, Arial, sans-serif">Trial CPI Error over Test Sequence</text><rect x="56" y="40" width="644" height="192" fill="none" stroke="#d2d2d7"/><text x="360" y="268" text-anchor="middle" font-size="11" fill="#6e6e73">Trial #</text><circle cx="56.0" cy="218.8" r="3.2" fill="#0071e3"/><circle cx="89.9" cy="218.8" r="3.2" fill="#0071e3"/><circle cx="123.8" cy="218.8" r="3.2" fill="#0071e3"/><circle cx="157.7" cy="218.8" r="3.2" fill="#0071e3"/><circle cx="191.6" cy="218.8" r="3.2" fill="#0071e3"/><circle cx="225.5" cy="218.8" r="3.2" fill="#34c759"/><circle cx="259.4" cy="218.8" r="3.2" fill="#34c759"/><circle cx="293.3" cy="218.8" r="3.2" fill="#34c759"/><circle cx="327.2" cy="218.8" r="3.2" fill="#34c759"/><circle cx="361.1" cy="218.8" r="3.2" fill="#34c759"/><circle cx="394.9" cy="218.8" r="3.2" fill="#ff9f0a"/><circle cx="428.8" cy="218.8" r="3.2" fill="#ff9f0a"/><circle cx="462.7" cy="218.8" r="3.2" fill="#ff9f0a"/><circle cx="496.6" cy="218.8" r="3.2" fill="#ff9f0a"/><circle cx="530.5" cy="218.8" r="3.2" fill="#ff9f0a"/><circle cx="564.4" cy="218.8" r="3.2" fill="#af52de"/><circle cx="598.3" cy="218.8" r="3.2" fill="#af52de"/><circle cx="632.2" cy="218.8" r="3.2" fill="#af52de"/><circle cx="666.1" cy="218.8" r="3.2" fill="#af52de"/><circle cx="700.0" cy="218.8" r="3.2" fill="#af52de"/></svg></div>
+  <div class="chart"><svg xmlns="http://www.w3.org/2000/svg" width="720" height="280" viewBox="0 0 720 280"><rect width="100%" height="100%" fill="#ffffff"/><text x="360" y="22" text-anchor="middle" font-size="14" fill="#1d1d1f" font-family="Segoe UI, Helvetica, Arial, sans-serif">CPI Error Distribution by DPI</text><rect x="56" y="40" width="644" height="192" fill="none" stroke="#d2d2d7"/><line x1="136.5" y1="216.0" x2="136.5" y2="216.0" stroke="#0071e3" stroke-width="1.5"/><rect x="124.5" y="216.0" width="24" height="0.0" fill="#0071e333" stroke="#0071e3"/><line x1="124.5" y1="216.0" x2="148.5" y2="216.0" stroke="#1d1d1f" stroke-width="2"/><text x="136.5" y="262" text-anchor="middle" font-size="11" fill="#6e6e73">400</text><line x1="297.5" y1="216.0" x2="297.5" y2="216.0" stroke="#0071e3" stroke-width="1.5"/><rect x="285.5" y="216.0" width="24" height="0.0" fill="#0071e333" stroke="#0071e3"/><line x1="285.5" y1="216.0" x2="309.5" y2="216.0" stroke="#1d1d1f" stroke-width="2"/><text x="297.5" y="262" text-anchor="middle" font-size="11" fill="#6e6e73">800</text><line x1="458.5" y1="216.0" x2="458.5" y2="216.0" stroke="#0071e3" stroke-width="1.5"/><rect x="446.5" y="216.0" width="24" height="0.0" fill="#0071e333" stroke="#0071e3"/><line x1="446.5" y1="216.0" x2="470.5" y2="216.0" stroke="#1d1d1f" stroke-width="2"/><text x="458.5" y="262" text-anchor="middle" font-size="11" fill="#6e6e73">1600</text><line x1="619.5" y1="216.0" x2="619.5" y2="216.0" stroke="#0071e3" stroke-width="1.5"/><rect x="607.5" y="216.0" width="24" height="0.0" fill="#0071e333" stroke="#0071e3"/><line x1="607.5" y1="216.0" x2="631.5" y2="216.0" stroke="#1d1d1f" stroke-width="2"/><text x="619.5" y="262" text-anchor="middle" font-size="11" fill="#6e6e73">3200</text></svg></div>
+  <p class="meta">Motion timing evidence not available for this Session.</p>
+
+  <h2>DPI Behavior Trends</h2>
+  <p class="meta">Descriptive charts from canonical group summaries. Not a Finding and not a high-DPI interpolation verdict.</p>
+  <div class="chart"><svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="64" y="22" fill="#1d1d1f" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="600">Measured CPI vs Configured DPI</text>
+<text x="64" y="42" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11">Closer to the grey 1:1 ideal line means Effective CPI is nearer the configured value.</text>
+<rect x="64" y="72" width="628" height="192" fill="#f5f5f7" stroke="#d2d2d7"/>
+<line x1="64" y1="213.00" x2="692" y2="213.00" stroke="#d2d2d7" stroke-width="1" stroke-dasharray="2 3"/><text x="58" y="216.00" text-anchor="end" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">1000</text><line x1="64" y1="156.18" x2="692" y2="156.18" stroke="#d2d2d7" stroke-width="1" stroke-dasharray="2 3"/><text x="58" y="159.18" text-anchor="end" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">2000</text><line x1="64" y1="99.36" x2="692" y2="99.36" stroke="#d2d2d7" stroke-width="1" stroke-dasharray="2 3"/><text x="58" y="102.36" text-anchor="end" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">3000</text><line x1="92.55" y1="247.09" x2="663.45" y2="88.00" stroke="#8E8E93" stroke-width="1.6" stroke-dasharray="6 4"/><polyline fill="none" stroke="#0071E3" stroke-width="2.5" points="92.55,248.00 174.10,226.18 337.22,182.55 663.45,95.27"/><circle cx="92.55" cy="248.00" r="4" fill="#0071E3"/><circle cx="174.10" cy="226.18" r="4" fill="#0071E3"/><circle cx="337.22" cy="182.55" r="4" fill="#0071E3"/><circle cx="663.45" cy="95.27" r="4" fill="#0071E3"/>
+<text x="92.55" y="280.00" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">400</text><text x="174.10" y="280.00" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">800</text><text x="337.22" y="280.00" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">1600</text><text x="663.45" y="280.00" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">3200</text>
+<text x="360" y="306" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11">Configured DPI</text>
+<text x="16" y="168.0" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" transform="rotate(-90 16 168.0)">Average measured CPI</text>
+<text x="64" y="292" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">Measured average · Ideal 1:1</text>
+</svg>
+<!-- observation: All measured group means are below the ideal 1:1 reference; the largest deviation of group-average CPI from configured DPI is 4.00% (not the same as Accuracy maximum individual Trial error). -->
+<!-- metric_note: Chart summary uses deviation of group-average CPI from configured DPI. Accuracy Finding uses maximum individual Trial |error| — different metrics. -->
+</div>
+  <p class="meta"><em>Closer to the grey 1:1 ideal line means Effective CPI is nearer the configured value.</em><br/>
+  All measured group means are below the ideal 1:1 reference; the largest deviation of group-average CPI from configured DPI is 4.00% (not the same as Accuracy maximum individual Trial error).<br/>
+  Chart summary uses deviation of group-average CPI from configured DPI. Accuracy Finding uses maximum individual Trial |error| — different metrics.</p>
+  <div class="chart"><svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="64" y="22" fill="#1d1d1f" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="600">Maximum CPI error by DPI</text>
+<text x="64" y="42" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11">Lower is better; PASS / WARN / FAIL bands follow this Session's Accuracy thresholds.</text>
+<rect x="64" y="72" width="628" height="192" fill="#f5f5f7" stroke="#d2d2d7"/>
+<line x1="64" y1="248.00" x2="692" y2="248.00" stroke="#d2d2d7" stroke-width="1" stroke-dasharray="2 3"/><text x="58" y="251.00" text-anchor="end" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">0</text><line x1="64" y1="133.71" x2="692" y2="133.71" stroke="#d2d2d7" stroke-width="1" stroke-dasharray="2 3"/><text x="58" y="136.71" text-anchor="end" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">5</text><rect x="64" y="88.00" width="628" height="91.43" fill="#FFD60A" fill-opacity="0.08"/><line x1="64" y1="179.43" x2="692" y2="179.43" stroke="#1F8F4E" stroke-width="1.2" stroke-dasharray="4 3"/><line x1="64" y1="88.00" x2="692" y2="88.00" stroke="#C9342D" stroke-width="1.2" stroke-dasharray="4 3"/><text x="68" y="175.43" text-anchor="start" fill="#1F8F4E" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">PASS ≤ 3%</text><text x="68" y="136.71" text-anchor="start" fill="#B26A00" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">WARN 3–7%</text><text x="68" y="84.00" text-anchor="start" fill="#C9342D" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">FAIL > 7%</text><polyline fill="none" stroke="#0071E3" stroke-width="2.5" points="92.55,156.57 174.10,156.57 337.22,156.57 663.45,156.57"/><circle cx="92.55" cy="156.57" r="4" fill="#0071E3"/><circle cx="174.10" cy="156.57" r="4" fill="#0071E3"/><circle cx="337.22" cy="156.57" r="4" fill="#0071E3"/><circle cx="663.45" cy="156.57" r="4" fill="#0071E3"/>
+<text x="92.55" y="280.00" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">400</text><text x="174.10" y="280.00" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">800</text><text x="337.22" y="280.00" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">1600</text><text x="663.45" y="280.00" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">3200</text>
+<text x="360" y="306" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11">Configured DPI</text>
+<text x="16" y="168.0" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" transform="rotate(-90 16 168.0)">Maximum absolute CPI error (%)</text>
+<text x="64" y="292" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">Max individual |error| % · PASS / WARN / FAIL thresholds</text>
+</svg>
+<!-- observation: PASS 0 · WARN 4 · FAIL 0 DPI groups by maximum absolute CPI error vs Session Accuracy thresholds (PASS ≤ 3% · WARN &gt; 3%–7% · FAIL &gt; 7%). -->
+<!-- metric_note: Uses each group's maximum absolute Trial CPI error (same family as Accuracy). -->
+</div>
+  <p class="meta"><em>Lower is better; PASS / WARN / FAIL bands follow this Session&#x27;s Accuracy thresholds.</em><br/>
+  PASS 0 · WARN 4 · FAIL 0 DPI groups by maximum absolute CPI error vs Session Accuracy thresholds (PASS ≤ 3% · WARN &gt; 3%–7% · FAIL &gt; 7%).<br/>
+  Uses each group&#x27;s maximum absolute Trial CPI error (same family as Accuracy).</p>
+  <div class="chart"><svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="64" y="22" fill="#1d1d1f" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="15" font-weight="600">Repeatability (CPI CV)</text>
+<text x="64" y="42" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11">Lower CV means repeated measurements at the same DPI are more consistent.</text>
+<rect x="64" y="72" width="628" height="192" fill="#f5f5f7" stroke="#d2d2d7"/>
+<line x1="64" y1="248.00" x2="692" y2="248.00" stroke="#d2d2d7" stroke-width="1" stroke-dasharray="2 3"/><text x="58" y="251.00" text-anchor="end" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">0</text><line x1="64" y1="194.67" x2="692" y2="194.67" stroke="#d2d2d7" stroke-width="1" stroke-dasharray="2 3"/><text x="58" y="197.67" text-anchor="end" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">1</text><line x1="64" y1="141.33" x2="692" y2="141.33" stroke="#d2d2d7" stroke-width="1" stroke-dasharray="2 3"/><text x="58" y="144.33" text-anchor="end" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">2</text><line x1="64" y1="88.00" x2="692" y2="88.00" stroke="#d2d2d7" stroke-width="1" stroke-dasharray="2 3"/><text x="58" y="91.00" text-anchor="end" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">3</text><rect x="64" y="88.00" width="628" height="106.67" fill="#FFD60A" fill-opacity="0.08"/><line x1="64" y1="194.67" x2="692" y2="194.67" stroke="#1F8F4E" stroke-width="1.2" stroke-dasharray="4 3"/><line x1="64" y1="88.00" x2="692" y2="88.00" stroke="#C9342D" stroke-width="1.2" stroke-dasharray="4 3"/><text x="68" y="190.67" text-anchor="start" fill="#1F8F4E" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">PASS ≤ 1%</text><text x="68" y="144.33" text-anchor="start" fill="#B26A00" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">WARN 1–3%</text><text x="68" y="84.00" text-anchor="start" fill="#C9342D" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">FAIL > 3%</text><polyline fill="none" stroke="#0071E3" stroke-width="2.5" points="92.55,248.00 174.10,248.00 337.22,248.00 663.45,248.00"/><circle cx="92.55" cy="248.00" r="4" fill="#0071E3"/><circle cx="174.10" cy="248.00" r="4" fill="#0071E3"/><circle cx="337.22" cy="248.00" r="4" fill="#0071E3"/><circle cx="663.45" cy="248.00" r="4" fill="#0071E3"/>
+<text x="92.55" y="280.00" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">400</text><text x="174.10" y="280.00" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">800</text><text x="337.22" y="280.00" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">1600</text><text x="663.45" y="280.00" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">3200</text>
+<text x="360" y="306" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11">Configured DPI</text>
+<text x="16" y="168.0" text-anchor="middle" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="11" transform="rotate(-90 16 168.0)">CPI CV (%)</text>
+<text x="64" y="292" fill="#6e6e73" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="10">CPI CV % · Repeatability PASS / WARN / FAIL thresholds</text>
+</svg>
+<!-- observation: 400 DPI has the highest CPI CV in this Session (0.0000%) — lower CV means higher repeatability. -->
+<!-- metric_note:  -->
+</div>
+  <p class="meta"><em>Lower CV means repeated measurements at the same DPI are more consistent.</em><br/>
+  400 DPI has the highest CPI CV in this Session (0.0000%) — lower CV means higher repeatability.</p>
+
+  <h2>Trial Evidence</h2>
+  <p class="meta">
+    Active: 20 ·
+    Rejected: 0 ·
+    History: 0
+  </p>
+  <table>
+    <thead><tr>
+      <th>Trial #</th><th>Configured DPI</th><th>Measured CPI</th>
+      <th>Error %</th><th>Status</th><th>Path Quality</th><th>Direction</th>
+    </tr></thead>
+    <tbody><tr><td>1</td><td>400</td><td>384.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>2</td><td>400</td><td>384.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>3</td><td>400</td><td>384.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>4</td><td>400</td><td>384.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>5</td><td>400</td><td>384.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>6</td><td>800</td><td>768.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>7</td><td>800</td><td>768.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>8</td><td>800</td><td>768.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>9</td><td>800</td><td>768.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>10</td><td>800</td><td>768.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>11</td><td>1600</td><td>1536.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>12</td><td>1600</td><td>1536.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>13</td><td>1600</td><td>1536.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>14</td><td>1600</td><td>1536.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>15</td><td>1600</td><td>1536.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>16</td><td>3200</td><td>3072.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>17</td><td>3200</td><td>3072.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>18</td><td>3200</td><td>3072.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>19</td><td>3200</td><td>3072.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr><tr><td>20</td><td>3200</td><td>3072.0</td><td>-4.00</td><td>WARN</td><td></td><td>N/A</td></tr></tbody>
+  </table>
+
+  <h2>Manual Observations</h2>
+  <p>None recorded.</p>
+
+  <h2 class="research">Research / Not Evaluated</h2>
+  <p class="meta">Reserved for future characterization; V1 does not infer these properties from Raw Input alone.</p>
+  <ul class="research"><li><strong>Linearity</strong> — NOT_EVALUATED</li><li><strong>Scaling evidence</strong> — NOT_EVALUATED</li><li><strong>Native capability</strong> — NOT_EVALUATED</li></ul>
+
+  <h2>Method / Limitations</h2>
+  <ul>
+    <li>This report validates <strong>effective CPI</strong> against a known physical distance.</li>
+    <li>Capture uses <strong>native Windows Raw Input</strong> (or the method recorded in measurement context).</li>
+    <li>Fixture Vector geometry uses <strong>Vector Magnitude</strong> √(dx²+dy²); direction is N/A.</li>
+    <li>Directional Axis geometry uses <strong>Axis Projection</strong> on the selected axis.</li>
+    <li>This report does <strong>not</strong> prove native sensor resolution.</li>
+    <li>This report does <strong>not</strong> identify firmware interpolation or scaling mechanisms.</li>
+  </ul>
+</body>
+</html>

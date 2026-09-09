@@ -1,0 +1,31 @@
+{
+  "fixture_id": "03_distance_to_mm",
+  "kind": "distance_to_mm",
+  "cases": [
+    {
+      "value": 100.0,
+      "unit": "mm",
+      "expected_mm": 100.0
+    },
+    {
+      "value": 3.0,
+      "unit": "cm",
+      "expected_mm": 30.0
+    },
+    {
+      "value": 2.0,
+      "unit": "inch",
+      "expected_mm": 50.8
+    },
+    {
+      "value": 1.0,
+      "unit": "in",
+      "expected_mm": 25.4
+    },
+    {
+      "value": 5.0,
+      "unit": "centimeters",
+      "expected_mm": 50.0
+    }
+  ]
+}

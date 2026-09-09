@@ -1,0 +1,27 @@
+[
+  {
+    "id": "dpi_control_identification",
+    "label": "DPI Control Identification",
+    "instruction": "Confirm how DPI is changed: DPI button, software profile, onboard profile, or other."
+  },
+  {
+    "id": "dpi_stage_count",
+    "label": "DPI Stage Count",
+    "instruction": "Cycle through available DPI stages and confirm the expected number of stages can be reached."
+  },
+  {
+    "id": "dpi_step_up_cycle",
+    "label": "DPI Step Up / Cycle Behavior",
+    "instruction": "Trigger DPI step/cycle several times. Confirm stages change in the expected order."
+  },
+  {
+    "id": "dpi_reset_check",
+    "label": "Unexpected DPI Reset Check",
+    "instruction": "After several DPI changes, confirm DPI does not unexpectedly reset to a wrong/default stage."
+  },
+  {
+    "id": "dpi_indicator_check",
+    "label": "DPI Indicator Check",
+    "instruction": "If the mouse has a DPI LED/software indicator, confirm it matches the selected stage. Use SKIP if unavailable."
+  }
+]

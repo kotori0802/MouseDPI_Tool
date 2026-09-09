@@ -1,0 +1,20 @@
+{
+  "source_package": "MouseDPI_v0.4.1",
+  "source_tool_version": "0.4.11-report-lifecycle-field-result",
+  "generator": "_generate_legacy_golden_fixtures.py",
+  "provenance": "USER_ATTESTED_CLEAN",
+  "public_metadata": {
+    "vendor": "ExampleVendor",
+    "model": "DemoMouse",
+    "notes": "Synthetic regression fixture"
+  },
+  "note": "Frozen from owner-controlled legacy prototype only. Numeric expectations are synthetic regression evidence — not a real product validation result. Do not regenerate from MouseDPI_Tool outputs.",
+  "fixtures": [
+    "01_compute_trial_vector_magnitude.json",
+    "02_compute_trial_axis_projection.json",
+    "03_distance_to_mm.json",
+    "04_synthetic_group_ratio.json",
+    "05_hand_group_ratio.json",
+    "00_fixture_policy.json"
+  ]
+}

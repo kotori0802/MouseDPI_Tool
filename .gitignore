@@ -1,0 +1,55 @@
+# Byte-compile / cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Virtualenvs
+.venv/
+venv/
+
+# Packaging / local outputs — never commit
+dist/
+build/
+*.egg-info/
+src/*.egg-info/
+
+# Local reports & qualification evidence (private by default)
+reports/
+
+# Local private development / gate history (do not publish)
+_private_dev_history/
+
+# Editor / IDE / agent
+.idea/
+.vscode/
+.cursor/
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs & local debug
+*.log
+debug-*.log
+
+# Preferences / secrets / signing
+ui_preferences.json
+.mouse_dpi_tool/
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Accidental native artifacts
+*.pyd
+*.so
+*.dll
+!packaging/**

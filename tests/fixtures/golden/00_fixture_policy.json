@@ -1,0 +1,75 @@
+{
+  "fixture_id": "00_fixture_policy",
+  "kind": "policy",
+  "parity_scope": [
+    "distance_to_mm",
+    "compute_trial measured_cpi / error_pct / primary_counts / vector_counts / axis_leakage",
+    "build_group_summaries numeric fields and status from CPI/CV/leakage only",
+    "build_ratio_analysis"
+  ],
+  "out_of_parity_scope": [
+    "legacy classify_path_quality merging PATH_REVERSAL into trial.status",
+    "legacy compute_metrics.health overall verdict",
+    "external host application summary schema",
+    "created_at timestamps"
+  ],
+  "compare_trial_fields": [
+    "trial_id",
+    "target_dpi",
+    "distance_input",
+    "distance_unit",
+    "distance_mm",
+    "axis",
+    "direction",
+    "movement_mode",
+    "counts_x",
+    "counts_y",
+    "vector_counts",
+    "primary_counts",
+    "secondary_counts",
+    "measured_cpi",
+    "error_pct",
+    "axis_leakage_pct",
+    "cpi_error_pass_pct",
+    "cpi_error_fail_pct",
+    "tolerance_mode",
+    "issue_tags",
+    "group_id",
+    "status"
+  ],
+  "compare_group_fields": [
+    "group_id",
+    "target_dpi",
+    "axis",
+    "direction",
+    "distance_mm",
+    "movement_mode",
+    "valid_trials",
+    "avg_measured_cpi",
+    "min_measured_cpi",
+    "max_measured_cpi",
+    "cpi_cv_pct",
+    "avg_error_pct",
+    "max_abs_error_pct",
+    "avg_axis_leakage_pct",
+    "max_axis_leakage_pct",
+    "status",
+    "issue_tags"
+  ],
+  "compare_ratio_fields": [
+    "axis",
+    "direction",
+    "distance_mm",
+    "movement_mode",
+    "from_dpi",
+    "to_dpi",
+    "expected_ratio",
+    "measured_ratio",
+    "ratio_error_pct",
+    "status",
+    "issue_tags"
+  ],
+  "strip_fields": [
+    "created_at"
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "fixture_id": "boundary_thresholds",
+  "note": "Hand-authored V1 boundary cases from published threshold rules. Not a real mouse capture. Not generated from implementation dumps.",
+  "settings": {
+    "distance_mm": 100.0,
+    "distance_unit": "mm",
+    "movement_mode": "Vector Magnitude",
+    "min_valid_trials_per_group": 3,
+    "cpi_error_pass_pct": 3.0,
+    "cpi_error_fail_pct": 5.0,
+    "cpi_cv_pass_pct": 1.0,
+    "cpi_cv_fail_pct": 3.0,
+    "ratio_error_pass_pct": 2.0,
+    "ratio_error_fail_pct": 5.0
+  },
+  "status_from_limits": [
+    {"value_abs": 3.0, "pass": 3.0, "fail": 5.0, "expected": "PASS"},
+    {"value_abs": 3.0001, "pass": 3.0, "fail": 5.0, "expected": "WARN"},
+    {"value_abs": 5.0, "pass": 3.0, "fail": 5.0, "expected": "WARN"},
+    {"value_abs": 5.0001, "pass": 3.0, "fail": 5.0, "expected": "FAIL"},
+    {"value_abs": 1.0, "pass": 1.0, "fail": 3.0, "expected": "PASS"},
+    {"value_abs": 1.0001, "pass": 1.0, "fail": 3.0, "expected": "WARN"},
+    {"value_abs": 3.0, "pass": 1.0, "fail": 3.0, "expected": "WARN"},
+    {"value_abs": 3.0001, "pass": 1.0, "fail": 3.0, "expected": "FAIL"},
+    {"value_abs": 2.0, "pass": 2.0, "fail": 5.0, "expected": "PASS"},
+    {"value_abs": 2.0001, "pass": 2.0, "fail": 5.0, "expected": "WARN"},
+    {"value_abs": 5.0, "pass": 2.0, "fail": 5.0, "expected": "WARN"},
+    {"value_abs": 5.0001, "pass": 2.0, "fail": 5.0, "expected": "FAIL"}
+  ],
+  "cpi_groups": [
+    {
+      "id": "cpi_pass_at_limit",
+      "error_pcts": [3.0, 3.0, 3.0],
+      "measured_cpis": [824.0, 824.0, 824.0],
+      "expected_status": "PASS",
+      "expected_tags_contains": []
+    },
+    {
+      "id": "cpi_warn",
+      "error_pcts": [3.0001, 3.0001, 3.0001],
+      "measured_cpis": [824.0008, 824.0008, 824.0008],
+      "expected_status": "WARN",
+      "expected_tags_contains": ["CPI_ERROR_WARN"]
+    },
+    {
+      "id": "cpi_fail",
+      "error_pcts": [5.0001, 5.0001, 5.0001],
+      "measured_cpis": [840.0008, 840.0008, 840.0008],
+      "expected_status": "FAIL",
+      "expected_tags_contains": ["CPI_ERROR_FAIL"]
+    }
+  ],
+  "cv_groups": [
+    {
+      "id": "cv_pass",
+      "measured_cpis": [800.0, 800.0, 800.0],
+      "error_pcts": [0.0, 0.0, 0.0],
+      "expected_status": "PASS",
+      "expected_cv_pct": 0.0
+    },
+    {
+      "id": "cv_fail",
+      "measured_cpis": [800.0, 900.0, 850.0],
+      "error_pcts": [0.0, 0.0, 0.0],
+      "expected_status": "FAIL",
+      "note": "CV is computed from measured_cpi spread. error_pcts kept inside CPI pass so CV is the FAIL driver."
+    }
+  ],
+  "insufficient_trials": {
+    "measured_cpis": [800.0, 800.0],
+    "error_pcts": [0.0, 0.0],
+    "expected_status": "WARN",
+    "expected_tags_contains": ["INSUFFICIENT_TRIALS"]
+  },
+  "ratio_pairs": [
+    {
+      "id": "ratio_pass",
+      "from_avg": 800.0,
+      "to_avg": 1600.0,
+      "from_dpi": 800,
+      "to_dpi": 1600,
+      "expected_status": "PASS"
+    },
+    {
+      "id": "ratio_warn",
+      "from_avg": 800.0,
+      "to_avg": 1633.6,
+      "from_dpi": 800,
+      "to_dpi": 1600,
+      "expected_status": "WARN"
+    },
+    {
+      "id": "ratio_fail",
+      "from_avg": 800.0,
+      "to_avg": 1760.0,
+      "from_dpi": 800,
+      "to_dpi": 1600,
+      "expected_status": "FAIL"
+    }
+  ]
+}
