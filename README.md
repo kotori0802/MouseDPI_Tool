@@ -133,20 +133,44 @@ Differentiation is methodology and evidence (native Raw Input, per-device counts
 
 ## Quick Start (Windows)
 
+The GitHub **Source code (zip)** is source only — it does **not** include `.venv`,
+installed dependencies, or a portable application bundle.
+
+### First-time setup (recommended)
+
+1. Install a supported Python (**3.11**, **3.12**, or **3.13**; see `requires-python` in `pyproject.toml`).
+2. Extract the source tree (or clone the repository).
+3. Double-click / run:
+
+```text
+INSTALL_Mouse_DPI_Tool.cmd
+```
+
+4. Then start the app:
+
+```text
+RUN_Mouse_DPI_Tool.cmd
+```
+
+`INSTALL_Mouse_DPI_Tool.cmd` creates `.venv` and runs `pip install -e ".[ui]"` only.  
+`RUN_Mouse_DPI_Tool.cmd` launches the prepared `.venv` — it does **not** auto-install packages.
+
+If INSTALL reports that an existing `.venv` uses an unsupported Python version
+(`requires-python`: **>=3.11,<3.14**), delete that `.venv` folder manually and run
+`INSTALL_Mouse_DPI_Tool.cmd` again. The installer will not remove it for you.
+
+### Manual / technical workflow
+
 ```powershell
 cd <repo-root>
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e ".[ui]"
+.\.venv\Scripts\python.exe -m mouse_dpi_tool ui
 ```
 
-Then either:
+Or after install: `RUN_Mouse_DPI_Tool.cmd` / `.\.venv\Scripts\mouse-dpi-tool.exe ui`
 
-- Double-click / run `RUN_Mouse_DPI_Tool.cmd` (prefers `.venv\Scripts\python.exe` when present; same entry as `python -m mouse_dpi_tool ui`)
-- Or: `.\.venv\Scripts\mouse-dpi-tool.exe ui`
-
-The launcher does **not** auto-install packages. Prefer the documented `.venv` path. If a system Python launcher is selected and the package is missing, the script prints setup instructions and exits non-zero — create/install `.venv` as above, then re-run.
-
-For development and testing, install the extras together:
+For development and testing:
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -e ".[dev,ui]"

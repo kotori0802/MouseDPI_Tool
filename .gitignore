@@ -21,6 +21,9 @@ src/*.egg-info/
 # Local reports & qualification evidence (private by default)
 reports/
 
+# Local pre-commit / clean-machine smoke bundles (do not publish)
+_smoke_artifacts/
+
 # Local private development / gate history (do not publish)
 _private_dev_history/
 
