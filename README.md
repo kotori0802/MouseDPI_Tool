@@ -1,24 +1,94 @@
 # Mouse DPI Tool
 
-Standalone, **vendor-neutral** desktop engineering tool for mouse DPI measurement and
-evidence reporting — Effective CPI validation via native Windows Raw Input and a known
-physical travel distance.
+**Mouse DPI Tool** is a standalone, **vendor-neutral** Windows desktop application for
+measuring mouse DPI (Effective CPI) and turning those measurements into structured
+engineering evidence.
 
-Designed to turn repeatable mouse movement measurements into structured engineering
-evidence for any compatible mouse / device under test (DUT).
+It solves a practical validation problem: given a known physical travel distance and
+native Windows Raw Input counts, produce repeatable Session JSON / HTML reports with
+accuracy, repeatability, path-quality, and configured-DPI scaling Findings — for any
+compatible mouse / device under test (DUT), not a single manufacturer or product family.
+
+**Current status:** `0.1.0rc1` source Release Candidate (Python + UI workflow).  
+Portable binary redistribution is deferred. MIT licensed.
 
 **Canonical report language:** English (UI may localize display labels only)
 
+## Preview
+
+Mouse DPI Tool follows a simple evidence workflow: configure the measurement
+context, capture a controlled physical movement, then review findings across
+DPI groups.
+
+### 1. Configure
+
+<p align="center">
+  <img src="docs/images/setup.png"
+       alt="Mouse DPI Tool — Configure measurement session"
+       width="100%">
+</p>
+
+Define the measurement context before testing:
+
+- identify the device under test
+- set the known physical travel distance
+- choose the measurement geometry
+- confirm the acceptance criterion
+- record optional session notes
+
+The committed setup becomes the measurement context used by subsequent
+captures.
+
+### 2. Capture
+
+<p align="center">
+  <img src="docs/images/capture.png"
+       alt="Mouse DPI Tool — Capture Raw Input measurement evidence"
+       width="100%">
+</p>
+
+Capture one controlled movement at a time:
+
+- enter the configured DPI
+- verify the committed geometry
+- start capture with `F5`
+- move across the known physical distance
+- stop and review the captured evidence
+- admit only a valid, complete trial
+
+The Capture view keeps the physical measurement workflow and its evidence
+visible together, including path visualization and capture state.
+
+### 3. Analyze
+
+<p align="center">
+  <img src="docs/images/results.png"
+       alt="Mouse DPI Tool — Analyze DPI measurement findings"
+       width="100%">
+</p>
+
+Review accumulated evidence across DPI groups:
+
+- **Accuracy** — Effective CPI closeness to configured DPI
+- **Repeatability** — within-group CPI consistency
+- **Path Quality** — evaluable path evidence under the current rules
+- **Relative DPI Scaling** — measured ratios between configured DPI steps
+- **DPI Evidence Summary** — group-level measured CPI, error, CV, and status
+- **Engineering Diagnostics** — deeper descriptive views when needed
+
+The Results view separates human-facing Findings from descriptive engineering
+analysis so that the tool does not invent a single overall product verdict.
+
 ## Public data & security
 
-- First public baseline is **source-only** (no `dist/` / bundled Qt binaries in Git).
+- This RC is **source-only** (no `dist/` / bundled Qt binaries in Git).
 - Public fixtures and `examples/` are **synthetic**. Private qualification Sessions stay local (`reports/` is ignored).
-- First-party project source is released by the project owner under the MIT License. Public example data is synthetic and does not contain employer/client qualification records.
+- First-party source is released under the MIT License. Public example data is synthetic and does not contain private qualification records.
 - See `SECURITY_CODEX.md`, `THREAT_MODEL.md`, `SECURITY.md`, `PUBLIC_RELEASE_CHECKLIST.md`, `THIRD_PARTY_LICENSES.md`, and `docs/SOFTWARE_VALIDATION.md`.
 
 ## Hard rules
 
-- Standalone package only — no employer/client/external shared-runtime or orchestration coupling
+- Standalone package only — no external shared-runtime or orchestration coupling
 - Canonical DPI field: `configured_dpi` (legacy `target_dpi` is ingest-only)
 - No single Overall PASS/WARN/FAIL verdict in V1 machine schema
 - Path metrics owned only by `path_quality/`
@@ -35,7 +105,7 @@ V1 formal Effective CPI supports **two geometries** (Session `movement_mode`):
 | **Fixture Vector** (default Qt operator) | `Vector Magnitude` | \(\sqrt{dx^2+dy^2}\) |
 | **Directional Axis** | `Axis Projection` | `|dx|` or `|dy|` |
 
-### Fixture Vector (lab any-angle straight line)
+### Fixture Vector (any-angle straight line)
 
 Known physical distance + continuous straight stroke at any angle + Raw Input net counts.
 Official CPI = vector magnitude / inch. Signed X+/Y+ direction is **not** an admission gate.
@@ -97,13 +167,16 @@ The launcher does **not** auto-install packages. Prefer the documented `.venv` p
 pytest
 ```
 
-## Packaged Windows UI (onedir) — optional / not required for lab work
+## Portable packaging (deferred)
 
-**Prefer the Quick Start entry for daily testing.** The packaged EXE + Raw Input helper
-is still hardening. Do not treat `dist/MouseDPI_Tool_UI` as Release-ready; keep packaging
-sources but use the Python entrypoint until packaging smoke is green.
+For **0.1.0rc1**, the supported workflow is the source-based Windows install above
+(`pip install -e ".[ui]"` / `RUN_Mouse_DPI_Tool.cmd`).
 
-Build both the main UI and the dedicated Raw Input helper when you need a portable folder:
+Portable onedir binaries are **not** published with this source RC. Packaging scripts
+under `packaging/` are included for development and reproducibility; they do **not**
+imply Qt/PySide redistribution readiness.
+
+To build a local portable folder for your own experiments:
 
 ```powershell
 python packaging/build_windows.py

@@ -6,4 +6,4 @@ Points at the in-package manual observation template:
 
 Load via `mouse_dpi_tool.resources.manual_observation_template()`.
 
-No third-party binaries, employer documents, or proprietary screenshots are stored under `reference/`.
+No third-party binaries, confidential documents, or proprietary screenshots are stored under `reference/`.

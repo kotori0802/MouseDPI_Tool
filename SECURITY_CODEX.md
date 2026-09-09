@@ -6,7 +6,7 @@ Changes that weaken these invariants require explicit security review (SC-11).
 This document is not a legal opinion.
 
 First-party project source is released by the project owner under the MIT License.
-Public example data is synthetic and does not contain employer/client qualification records.
+Public example data is synthetic and does not contain private qualification records.
 
 ---
 
@@ -19,7 +19,7 @@ No credential, private key, token, or signing material in source, history, logs,
 Only code/data/docs/assets the project owner has the right to publish. Third-party components keep their own licenses and notices.
 
 ### SC-03 NO PRIVATE ENVIRONMENT LEAKAGE
-No employer/client confidential information, NDA content, internal infrastructure, hostnames, or unreleased product data in the public tree.
+No confidential organizational information, NDA content, internal infrastructure, hostnames, or unreleased product data in the public tree.
 
 ### SC-04 PUBLIC TEST DATA IS SYNTHETIC OR SANITIZED
 Real engineering / qualification Sessions are private by default. Public fixtures and `examples/` must be synthetic or sanitized.
@@ -51,8 +51,8 @@ No hidden outlier removal, silent threshold widening, CPI “correction,” or F
 ### SC-13 MEASUREMENT SEMANTICS HONESTY
 WARN/FAIL Findings are valid evidence outcomes. Do not overclaim native sensor DPI or treat Strict Accuracy WARN as a Tool defect by default.
 
-### SC-14 NO EXTERNAL / EMPLOYER RUNTIME COUPLING
-Standalone package only. No employer/client/external orchestration or shared-runtime imports at application runtime. No legacy companion-tool imports in the shipped package.
+### SC-14 NO EXTERNAL RUNTIME COUPLING
+Standalone package only. No external orchestration or shared-runtime imports at application runtime. No legacy companion-tool imports in the shipped package.
 
 ### SC-15 HUMAN-CONTROLLED RELEASE AUTHORITY
 Automated assistants may inspect, edit, test, scan, and prepare repository state. The project owner must personally execute authority-bearing actions: commit authorship, release tags, remotes, pushes, repository visibility changes, release publication, and release signing. Automated attribution must not be silently injected into repository history.

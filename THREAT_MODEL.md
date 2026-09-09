@@ -19,7 +19,7 @@ Companion to `SECURITY_CODEX.md`. Not a legal clearance document.
 ### Catastrophic leaks
 
 - Secrets / signing keys  
-- Client confidential product/lab data  
+- Confidential product/lab data  
 - Absolute machine user paths in published artifacts  
 - Unknown-provenance third-party code  
 

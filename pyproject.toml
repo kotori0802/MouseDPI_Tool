@@ -9,7 +9,7 @@ description = "Standalone brand-neutral Mouse DPI Tool (Effective CPI measuremen
 readme = "README.md"
 requires-python = ">=3.11,<3.14"
 license = { text = "MIT" }
-authors = [{ name = "Mouse DPI Tool Authors" }]
+authors = [{ name = "Leo Cheng" }]
 dependencies = [
   "jsonschema>=4.21",
 ]

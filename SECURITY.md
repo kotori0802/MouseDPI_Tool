@@ -2,17 +2,16 @@
 
 ## Supported versions
 
-Until a public release is tagged, treat the development tree as **unsupported for production liability**.  
-When releases exist, this section will list supported version ranges.
-
-| Version | Supported |
+| Version | Status |
 |---|---|
-| `0.1.0rc1` (current) | Source Release Candidate |
-| Future stable | TBD after private GitHub staging / publication gates |
+| `0.1.0rc1` (current) | Source Release Candidate — not production-supported |
+| Future stable | TBD |
+
+Treat this tree as unsupported for production liability until a stable release is published.
 
 ## Reporting a vulnerability
 
-Prefer private disclosure to the repository owner (GitHub Security Advisories once the repo exists, or direct contact listed by the owner).
+Prefer private disclosure to the repository owner (for example via GitHub Security Advisories, or direct contact listed by the owner).
 
 Please include:
 

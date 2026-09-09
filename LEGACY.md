@@ -19,7 +19,7 @@
 ## Public-data note
 
 - Golden fixtures contain synthetic numeric regression inputs/expected values — not product validation evidence.
-- Do not embed employer/client names, unreleased product identifiers, hostnames, or absolute personal paths in fixtures or this tree.
+- Do not embed private organization or product identifiers, hostnames, or absolute personal paths in fixtures or this tree.
 
 ## configured_dpi compatibility
 
