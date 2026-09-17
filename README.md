@@ -9,7 +9,7 @@ native Windows Raw Input counts, produce repeatable Session JSON / HTML reports 
 accuracy, repeatability, path-quality, and configured-DPI scaling Findings — for any
 compatible mouse / device under test (DUT), not a single manufacturer or product family.
 
-**Current status:** `0.1.0rc2` source Release Candidate (Python + UI workflow).  
+**Current status:** `0.1.0rc3` source Release Candidate (Python + UI workflow).
 Portable binary redistribution is deferred. MIT licensed.
 
 **Canonical report language:** English (UI may localize display labels only)
@@ -147,7 +147,7 @@ D:\Tools\MouseDPI
 ```
 
    Prefer a short absolute path over a deep hierarchy (synced folders, long directory
-   names, or duplicate nested extract folders such as `…\MouseDPI_Tool-0.1.0rc2\MouseDPI_Tool-0.1.0rc2\`).
+   names, or duplicate nested extract folders such as `…\MouseDPI_Tool-0.1.0rc3\MouseDPI_Tool-0.1.0rc3\`).
    The drive letter itself is not the requirement.
 3. Double-click / run:
 
@@ -210,7 +210,7 @@ pytest
 
 ## Portable packaging (deferred)
 
-For **0.1.0rc2**, the supported path is the source-based Windows workflow above.
+For **0.1.0rc3**, the supported path is the source-based Windows workflow above.
 Portable binaries are not published with this RC. Sources under `packaging/` remain
 available for development and reproducibility (not a Qt/PySide redistribution claim).
 

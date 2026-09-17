@@ -4,7 +4,8 @@
 
 | Version | Status |
 |---|---|
-| `0.1.0rc2` (current) | Source Release Candidate — not production-supported |
+| `0.1.0rc3` (current) | Source Release Candidate — not production-supported |
+| `0.1.0rc2` | Source Release Candidate (published tag; immutable) |
 | `0.1.0rc1` | First public source RC (published tag; immutable) |
 | Future stable | TBD |
 
