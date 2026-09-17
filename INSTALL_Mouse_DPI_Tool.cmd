@@ -92,6 +92,16 @@ echo Installing Mouse DPI Tool UI runtime: pip install -e ".[ui]"
 if errorlevel 1 (
   echo ERROR: Package install failed.
   echo Check network access to PyPI and that you extracted the full source tree.
+  echo.
+  echo If pip mentioned Windows Long Path / Long Paths, "No such file or directory",
+  echo or a very deep PySide6 path under .venv, try a shorter extract location and
+  echo run INSTALL again. Examples:
+  echo   C:\Tools\MouseDPI
+  echo   D:\Tools\MouseDPI
+  echo The drive letter is not the requirement - a short absolute path is.
+  echo Deep OneDrive/synced folders or duplicate nested extract folders can make
+  echo paths too long for this Windows environment. This installer does not change
+  echo Windows Long Paths policy or require Administrator rights.
   goto :fail
 )
 

@@ -139,7 +139,16 @@ installed dependencies, or a portable application bundle.
 ### First-time setup (recommended)
 
 1. Install a supported Python (**3.11**, **3.12**, or **3.13**; see `requires-python` in `pyproject.toml`).
-2. Extract the source tree (or clone the repository).
+2. Extract the source tree (or clone the repository) to a **short local path** when practical, for example:
+
+```text
+C:\Tools\MouseDPI
+D:\Tools\MouseDPI
+```
+
+   Prefer a short absolute path over a deep hierarchy (synced folders, long directory
+   names, or duplicate nested extract folders such as `…\MouseDPI_Tool-0.1.0rc2\MouseDPI_Tool-0.1.0rc2\`).
+   The drive letter itself is not the requirement.
 3. Double-click / run:
 
 ```text
@@ -158,6 +167,11 @@ RUN_Mouse_DPI_Tool.cmd
 If INSTALL reports that an existing `.venv` uses an unsupported Python version
 (`requires-python`: **>=3.11,<3.14**), delete that `.venv` folder manually and run
 `INSTALL_Mouse_DPI_Tool.cmd` again. The installer will not remove it for you.
+
+If `pip install` fails and the output mentions Windows Long Paths, `No such file or directory`,
+or a very deep `PySide6` path under `.venv`, move the project to a shorter path (examples above)
+and run INSTALL again. Where company policy allows it, enabling Windows Long Paths may also help;
+this project does **not** modify registry or Group Policy.
 
 ### Manual / technical workflow
 
