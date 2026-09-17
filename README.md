@@ -123,7 +123,7 @@ Important:
 - Radial Target Gauge is a **target-radius** instrument, not a “draw a circle” test.
 - **Effective CPI is not equivalent to native sensor capability.**
 
-Session trials store the existing canonical pair `axis` (`X`|`Y`) and `direction` (`X+`|`X-`|`Y+`|`Y-`). Under Fixture Vector these fields are non-authoritative placeholders (`X` / `X+`); grouping still includes `movement_mode`. **Per-trial `axis` + `direction` are authoritative only for Axis Projection.** Top-level `measurement_context.direction` is non-authoritative.
+Session trials store the existing canonical pair `axis` (`X`|`Y`) and `direction` (`X+`|`X-`|`Y+`|`Y-`) for **Directional Axis** (Axis Projection), where those fields are authoritative. Under **Fixture Vector** (`Vector Magnitude`), `axis` / `direction` are non-authoritative and serialized as `N/A` (not `X` / `X+`); grouping still includes `movement_mode` and merges opposite travel signs into the same DPI/distance/mode bucket. Top-level `measurement_context.direction` is non-authoritative.
 
 ## Scope and interpretation
 
